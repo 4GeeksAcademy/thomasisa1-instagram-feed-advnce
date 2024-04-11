@@ -1,238 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			crossorigin="anonymous"
-		/>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
-    <link rel="stylesheet" href="./styles.css">
-    <title>Instagram Photo Feed</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram</title>
+<!-- Bootstrap CSS -->
+<style>
+    /* Always show the scrollbar to prevent shifting */
+html {
+      overflow-y: scroll;
+    }
+  </style>
+  
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  
-  <div class="container main-container mt-4">
-    
-    <div class="row">
-      <div class="container-fluid mt-5">
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container">
-              <a class="navbar-brand d-flex align-items-center" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-              </svg> <i class="fa-brands fa-instagram mr-1"></i>
-                  <span>Instagram</span>
-          
-              </a>
-              <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-          
-                <ul class="navbar-nav align-items-center">
-                  <li class="nav-item active">
 
-                    <button type="button" class="btn btn-success" style="margin-right: 30px;" data-toggle="modal" data-target="#createPostModal">
-                      Create a new post
-                    </button>
-                    <div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabel">Create a new post</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                              <div class="form-group">
-                                <label for="post-caption">Caption:</label>
-                                <textarea class="form-control" id="post-caption" rows="3" placeholder="Add the caption of your post here"></textarea>
-                              </div>
-                              <!-- placeholder for Bootstrap icons  -->
-                              <button type="button" class="btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
-                                <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"></path>
-                                <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"></path>
-                              </svg>
-                                <i class="your-icon-class-for-gallery"></i>
-                              </button>
-                              <button type="button" class="btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"></path>
-                              </svg>
-                            
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success">Publish</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </li>
-          
-                 
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
-                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
-                          </svg>
-                        </svg>
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Accessibility</a>
-                        <a class="dropdown-item" href="#">Privacy and data</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" style="color: red;">Log Out</a>
-                      </div>
-                    </div>
-
-                  </li>
-          
-                </ul>
-          
-              </div>
-          
-            </div>
-          
-          </nav>
-        </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-12">
-        <ul class="nav nav-tabs justify-content-center" id="mytab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="grid-view-tab" data-toggle="tab" href="#grid-view" role="tab" aria-controls="grid-view" aria-selected="true">
-              <i class="fas fa-th"></i> Grid View
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="list-view-tab" data-toggle="tab" href="#list-view" role="tab" aria-controls="list-view" aria-selected="false">
-              <i class="fas fa-stop"></i> List View
-            </a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
-                <!-- Start of the first row of images -->
-  <div class="row">
-    <div class="col-4 mb-1 no-gutters-col"> <!-- column with bottom margin -->
-      <div class="card"> <!-- card container -->
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2013/02/21/19/06/drink-84533_640.jpg" alt="Card image cap">
-        <!-- card content goes here -->
-      </div>
-    </div>
-    <div class="col-4 mb-1 no-gutters-col">
-      <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2024/02/09/13/03/beach-8563083_640.jpg" alt="Card image cap">
-        <!-- card content goes here -->
-      </div>
-    </div>
-    <div class="col-4 mb-1 no-gutters-col">
-      <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/03/31/15/34/sunset-2191645_640.jpg" alt="Card image cap">
-        <!-- card content goes here -->
-      </div>
-    </div>
-  </div>
-  <!-- End of the first row of images -->
-    <!-- Start of the first row of images -->
-  <div class="row">
-    <div class="col-4 mb-1 no-gutters-col"> <!-- column with bottom margin -->
-      <div class="card"> <!-- card container -->
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/02/17/14/29/coffee-6024401_640.jpg" alt="Card image cap">
-        <!-- card content goes here -->
-      </div>
-    </div>
-    <div class="col-4 mb-1 no-gutters-col">
-      <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2023/08/28/04/33/butterfly-8218330_640.jpg" alt="Card image cap">
-        <!-- card content goes here -->
-      </div>
-    </div>
-    <div class="col-4 mb-1 no-gutters-col">
-      <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2023/04/17/20/02/woman-7933223_640.jpg" alt="Card image cap">
-        <!-- card content goes here -->
-      </div>
-    </div>
-  </div>
-  <!-- End of the first row of images -->
-  <!-- Start of the first row of images -->
-  <div class="row">
-    <div class="col-4 mb-1 no-gutters-col"> <!-- column with bottom margin -->
-      <div class="card"> <!-- card container -->
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2022/02/10/05/45/lantern-7004643_640.jpg" alt="Card image cap">
-        <!-- Optional card content here -->
-      </div>
-    </div>
-    <div class="col-4 mb-1 no-gutters-col">
-      <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/09/14/11/43/restaurant-939434_640.jpg" alt="Card image cap">
-        <!-- Optional card content here -->
-      </div>
-    </div>
-    <div class="col-4 mb-1 no-gutters-col">
-      <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2020/01/02/17/25/champagne-4736380_640.jpg" alt="Card image cap">
-        <!-- Optional card content here -->
-      </div>
-    </div>
-  </div>
-  <!-- End of the first row of images -->
-            <!-- Content for Grid View (existing image rows can be included here) -->
-          </div>
-          <div class="tab-pane fade" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
-            <div class="container my-3">
-              <div class="row">
-                  <div class="col-lg-8 mx-auto">
-                      <!-- Bootstrap card -->
-                      <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                          <h5 class="mb-0">I met a strawberry daiquiri on the beach! </h5>
-                          <small class="text-muted">08/26</small>
-                      </div>
-                          <img src="https://cdn.pixabay.com/photo/2013/02/21/19/06/drink-84533_640.jpg" class="card-img-top" alt="Crazy dog Spark">
-                          <div class="card-footer">
-                              <small>204 Likes</small>
-                              <p class="card-text">This is an example of a very good photo that you can post on Instagram.</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="container my-3">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <!-- Bootstrap card -->
-                    <div class="card">
-                      <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">The beach doesn't wave goodbye!</h5>
-                        <small class="text-muted">08/26</small>
-                    </div>
-                        <img src="https://cdn.pixabay.com/photo/2024/02/09/13/03/beach-8563083_640.jpg" class="card-img-top" alt="Crazy dog Spark">
-                        <div class="card-footer">
-                            <small>204 Likes</small>
-                            <p class="card-text">This is an example of a very good photo that you can post on Instagram.</p>
-                        </div>
-                    </div>
+<!-- Section 1: Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+          </svg> 
+      Instagram
+    </a>
+    <div class="ml-auto">
+        <button type="button" class="btn btn-success" style="margin-right: 30px;" data-toggle="modal" data-target="#createPostModal">
+            Create a new post
+          </button>
+          <div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel">Create a new post</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="post-caption">Caption:</label>
+                      <textarea class="form-control" id="post-caption" rows="3" placeholder="Add the caption of your post here"></textarea>
+                    </div>
+                    <!-- placeholder for Bootstrap icons  -->
+                    <button type="button" class="btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"></path>
+                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"></path>
+                      </svg>
+                        <i class="your-icon-class-for-gallery"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"></path>
+                      </svg>
+                    <!-- Add additional modal body elements here -->
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success">Publish</button>
+                </div>
+              </div>
             </div>
+          </div>
+
+      <!-- Dropdown button -->
+      <div class="btn-group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+              <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+              <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+            </svg>
+          </svg>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Accessibility</a>
+          <a class="dropdown-item" href="#">Privacy and data</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" style="color: red;">Log Out</a>
         </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Section 2: Grid and List view tabs -->
+<div class="container mt-4">
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="grid-view-tab" data-toggle="tab" href="#grid-view" role="tab" aria-controls="grid-view" aria-selected="true">
+          <i class="fas fa-th"></i> Grid View
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="list-view-tab" data-toggle="tab" href="#list-view" role="tab" aria-controls="list-view" aria-selected="false">
+          <i class="fas fa-list"></i> List View
+        </a>
+      </li>
+    </ul>
+  <!-- Tab panes -->
+  <div class="tab-content pt-3" id="myTabContent">
+    <!-- Grid View Pane -->
+    <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
+      <div class="row g-1">
+        <!-- Grid images here -->
+        <!-- Use col-4 for 3 columns layout on larger devices and col-12 for full width on smaller devices -->
+        <div class="row g-2">
+          <div class="col-4 mb-1 "> <!-- column with bottom margin -->
+            <div class="card"> <!-- card container -->
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2013/02/21/19/06/drink-84533_640.jpg" alt="Card image cap">
+              <!-- card content goes here -->
+            </div>
+          </div>
+          <div class="col-4 mb-1 ">
+            <div class="card">
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2024/02/09/13/03/beach-8563083_640.jpg" alt="Card image cap">
+              <!-- card content goes here -->
+            </div>
+          </div>
+          <div class="col-4 mb-1 ">
+            <div class="card">
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/03/31/15/34/sunset-2191645_640.jpg" alt="Card image cap">
+              <!-- card content goes here -->
+            </div>
+          </div>
+        </div>
+        <!-- End of the first row of images -->
+          <!-- Start of the first row of images -->
+        <div class="row g-2">
+          <div class="col-4 mb-1 "> <!-- column with bottom margin -->
+            <div class="card"> <!-- card container -->
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/02/17/14/29/coffee-6024401_640.jpg" alt="Card image cap">
+              <!-- card content goes here -->
+            </div>
+          </div>
+          <div class="col-4 mb-1 ">
+            <div class="card">
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2023/08/28/04/33/butterfly-8218330_640.jpg" alt="Card image cap">
+              <!-- card content goes here -->
+            </div>
+          </div>
+          <div class="col-4 mb-1 ">
+            <div class="card">
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2023/04/17/20/02/woman-7933223_640.jpg" alt="Card image cap">
+              <!-- card content goes here -->
+            </div>
+          </div>
+        </div>
+        <!-- End of the first row of images -->
+        <!-- Start of the first row of images -->
+        <div class="row g-2">
+          <div class="col-4 mb-1 "> <!-- column with bottom margin -->
+            <div class="card"> <!-- card container -->
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2022/02/10/05/45/lantern-7004643_640.jpg" alt="Card image cap">
+              <!-- Optional card content here -->
+            </div>
+          </div>
+          <div class="col-4 mb-1 ">
+            <div class="card">
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/09/14/11/43/restaurant-939434_640.jpg" alt="Card image cap">
+              <!-- Optional card content here -->
+            </div>
+          </div>
+          <div class="col-4 mb-1 ">
+            <div class="card">
+              <img class="card-img-top" src="https://cdn.pixabay.com/photo/2020/01/02/17/25/champagne-4736380_640.jpg" alt="Card image cap">
+              <!-- Optional card content here -->
+            </div>
+          </div>
+        </div>
+        <!-- ... more images ... -->
+      </div>
+    </div>
+    
+      
+      <!-- List View Pane -->
+      <div class="tab-pane fade" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
         <div class="container my-3">
           <div class="row">
               <div class="col-lg-8 mx-auto">
                   <!-- Bootstrap card -->
                   <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">On the horizon — it's love at first 'site'!</h5>
+                      <h5 class="mb-0">I met a strawberry daiquiri on the beach! </h5>
                       <small class="text-muted">08/26</small>
                   </div>
-                      <img src="https://cdn.pixabay.com/photo/2017/03/31/15/34/sunset-2191645_640.jpg" class="card-img-top" alt="Crazy dog Spark">
+                      <img src="https://cdn.pixabay.com/photo/2013/02/21/19/06/drink-84533_640.jpg" class="card-img-top" alt="Crazy dog Spark">
                       <div class="card-footer">
                           <small>204 Likes</small>
                           <p class="card-text">This is an example of a very good photo that you can post on Instagram.</p>
@@ -247,10 +202,10 @@
                 <!-- Bootstrap card -->
                 <div class="card">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">When it's rich, sweet, and never crumbles!</h5>
+                    <h5 class="mb-0">The beach doesn't wave goodbye!</h5>
                     <small class="text-muted">08/26</small>
                 </div>
-                    <img src="https://cdn.pixabay.com/photo/2021/02/17/14/29/coffee-6024401_640.jpg" class="card-img-top" alt="Crazy dog Spark">
+                    <img src="https://cdn.pixabay.com/photo/2024/02/09/13/03/beach-8563083_640.jpg" class="card-img-top" alt="Crazy dog Spark">
                     <div class="card-footer">
                         <small>204 Likes</small>
                         <p class="card-text">This is an example of a very good photo that you can post on Instagram.</p>
@@ -259,18 +214,45 @@
             </div>
         </div>
     </div>
+    <div class="container my-3">
+      <div class="row">
+          <div class="col-lg-8 mx-auto">
+              <!-- Bootstrap card -->
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">On the horizon — it's love at first 'site'!</h5>
+                  <small class="text-muted">08/26</small>
+              </div>
+                  <img src="https://cdn.pixabay.com/photo/2017/03/31/15/34/sunset-2191645_640.jpg" class="card-img-top" alt="Crazy dog Spark">
+                  <div class="card-footer">
+                      <small>204 Likes</small>
+                      <p class="card-text">This is an example of a very good photo that you can post on Instagram.</p>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
+  </div>
+  <div class="container my-3">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Bootstrap card -->
+            <div class="card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">When it's rich, sweet, and never crumbles!</h5>
+                <small class="text-muted">08/26</small>
+            </div>
+                <img src="https://cdn.pixabay.com/photo/2021/02/17/14/29/coffee-6024401_640.jpg" class="card-img-top" alt="Crazy dog Spark">
+                <div class="card-footer">
+                    <small>204 Likes</small>
+                    <p class="card-text">This is an example of a very good photo that you can post on Instagram.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
-
-   
 </div>
-</div>
-<!-- Bootstrap Bundle with Popper -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
